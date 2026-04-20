@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CARLV.SION — About</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Inter:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ══ NAV ══ -->
+  <nav class="nav" id="nav">
+    <div class="nav-logo-wrapper">
+      <a class="nav-logo" href="index.html">CARLV.SION</a>
+    </div>
+    <ul class="nav-links">
+      <li><a href="index.html">HOME</a></li>
+      <li><a href="gallery.html">GALLERY</a></li>
+      <li><a href="#" class="active">ABOUT</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a class="btn-outline" href="contact.html">CONTACT ME</a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- Mobile drawer -->
+  <div class="nav-drawer" id="navDrawer">
+    <a href="index.html"      onclick="closeDrawer()">HOME</a>
+    <a href="gallery.html"    onclick="closeDrawer()">GALLERY</a>
+    <a href="#"               onclick="closeDrawer()">ABOUT</a>
+    <a href="contact.html" onclick="closeDrawer()" class="btn-outline" style="font-size:18px;">CONTACT ME</a>
+  </div>
+
+  <!-- ══ PAGE ══ -->
+  <main class="about-page">
+
+    <!-- ── 1. ABOUT ME ── -->
+    <section class="ap-hero reveal">
+      <div class="ap-hero-text">
+        <h1 class="ap-display-title2">ABOUT ME</h1>
+        <p class="ap-body">
+          I am a 19-year-old <strong>concert photographer and video editor</strong> based in Manila,
+          currently studying at the University of Santo Tomas.
+        </p>
+        <p class="ap-body">
+          With a deep background in school production teams, I have experience in every stage of the
+          process, from planning and live camera work to final photo and video editing. I understand
+          the fast-paced nature of events and exactly what is needed to capture them perfectly.
+        </p>
+        <p class="ap-body">
+          Being a musician gives me a unique edge behind the lens. I have a natural feel for the
+          rhythm and beat, allowing me to anticipate the best angles and key moments before they even
+          happen. My goal is always to provide high-energy visuals that truly "pop."
+        </p>
+      </div>
+      <div class="ap-hero-photo">
+        <img src="images/Carl_Picture.webp" alt="Carl Valencia — photographer portrait" />
+      </div>
+    </section>
+
+    <!-- ── 2. WHY CHOOSE ME ── -->
+    <section class="ap-section reveal" id="why">
+      <h2 class="ap-display-title2">WHY CHOOSE ME</h2>
+      <div class="ap-cards">
+
+        <div class="ap-card">
+          <div class="ap-card-inner">
+            <div class="ap-card-header">
+              <span class="ap-card-num">01</span>
+              <h3 class="ap-card-title">QUALITY OVER QUANTITY</h3>
+            </div>
+            <p class="ap-card-body">
+              I prioritize impactful storytelling over sheer volume. Every deliverable is a
+              meaningful, high-contrast asset designed to capture attention and elevate your brand.
+            </p>
+          </div>
+        </div>
+
+        <div class="ap-card">
+          <div class="ap-card-inner">
+            <div class="ap-card-header">
+              <span class="ap-card-num">02</span>
+              <h3 class="ap-card-title">EFFICIENCY</h3>
+            </div>
+            <p class="ap-card-body">
+              Operating as an efficient, focused workaholic, I deliver fully polished and
+              post-processed results rapidly without sacrificing technical or artistic quality.
+            </p>
+          </div>
+        </div>
+
+        <div class="ap-card">
+          <div class="ap-card-inner">
+            <div class="ap-card-header">
+              <span class="ap-card-num">03</span>
+              <h3 class="ap-card-title">DRIVEN BY PASSION</h3>
+            </div>
+            <p class="ap-card-body">
+              I treat every frame with purposeful dedication, fueled by a relentless desire to
+              capture the perfect, defining moment of your event.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ── 3. TECH STACK ── -->
+    <section class="ap-section reveal" id="tech">
+      <div class="ap-tech-header">
+        <h2 class="section-title">TECH STACK</h2>
+        <span class="ap-tech-label">GEAR &amp; SOFTWARE</span>
+      </div>
+      <div class="ap-tech-grid">
+        <div class="ap-tech-item">
+          <span class="ap-tech-cat">COLOR GRADING</span>
+          <span class="ap-tech-name">Adobe Lightroom</span>
+        </div>
+        <div class="ap-tech-item">
+          <span class="ap-tech-cat">RETOUCH / GRAPHICS</span>
+          <span class="ap-tech-name">Adobe Photoshop</span>
+        </div>
+        <div class="ap-tech-item">
+          <span class="ap-tech-cat">VIDEO EDITING</span>
+          <span class="ap-tech-name">Davinci Resolve</span>
+        </div>
+        <div class="ap-tech-item">
+          <span class="ap-tech-cat">STORAGE</span>
+          <span class="ap-tech-name">Google Drive</span>
+        </div>
+        <div class="ap-tech-item">
+          <span class="ap-tech-cat">LAPTOP</span>
+          <span class="ap-tech-name">LOQ 15IRX9</span>
+        </div>
+        <div class="ap-tech-item">
+          <span class="ap-tech-cat">CAMERA / LENS</span>
+          <span class="ap-tech-name">Sony E-Mount APS-C</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── 4. NOTABLE PROJECTS — EMBLA LOOP CAROUSEL ── -->
+    <section class="ap-section ap-projects reveal" id="projects">
+      <h2 class="section-title">NOTABLE PROJECTS</h2>
+
+      <!--
+        No gradient fades — they were blocking pointer events on adjacent cards
+        and being removed entirely resolves both the click issue and the visual fade issue.
+        The dim/bright state of cards communicates focus without needing fades.
+      -->
+      <div class="embla" id="projectsEmbla">
+        <div class="embla__viewport">
+          <div class="embla__container">
+
+            <!-- ━━━ SLIDE 0 — UST PASKUHAN 2025 (unique highlighted card) ━━━ -->
+            <div class="embla__slide">
+              <article class="c-card" id="card-paskuhan">
+                <div class="c-card__image">
+                  <img
+                    src="images/photos/gallery/IMG_5035.webp"
+                    alt="UST Paskuhan 2025 — concert crowd at UST Grandstand"
+                  />
+                </div>
+                <div class="c-card__body">
+                  <div class="c-card__meta">
+                    <h3 class="c-card__title">UST PASKUHAN 2025</h3>
+                    <p class="c-card__date">
+                      DECEMBER 19, 2025 &nbsp;|&nbsp; OFFICIAL MEDIA REPRESENTATIVE
+                    </p>
+                  </div>
+                  <p class="c-card__desc">
+                    Held at the UST Grandstand and Open Field, the Grand Paskuhan Concert served
+                    as the ultimate homecoming for over 48,000 Thomasians, featuring
+                    <strong>Amiel Sol</strong>, <strong>Zack Tabudlo</strong>,
+                    <strong>Rob Deniel</strong>, <strong>Ben&amp;Ben</strong>, and
+                    <strong>BINI</strong>.
+                  </p>
+                </div>
+              </article>
+            </div>
+
+            <!-- ━━━ SLIDE 1 — MORE TO COME #1 ━━━ -->
+            <div class="embla__slide">
+              <article class="c-card c-card--placeholder" id="card-mtc-1">
+                <div class="c-card__image c-card__image--empty"></div>
+                <div class="c-card__body">
+                  <div class="c-card__meta">
+                    <h3 class="c-card__title">MORE TO COME</h3>
+                    <p class="c-card__date">
+                      MONTH DD / YEAR &nbsp;|&nbsp; OFFICIAL MEDIA REPRESENTATIVE
+                    </p>
+                  </div>
+                  <p class="c-card__desc">
+                    My portfolio is constantly growing as I cover more shows and festivals.
+                    Looking forward to more coverage!
+                  </p>
+                </div>
+              </article>
+            </div>
+
+            <!-- ━━━ SLIDE 2 — MORE TO COME #2 ━━━ -->
+            <div class="embla__slide">
+              <article class="c-card c-card--placeholder" id="card-mtc-2">
+                <div class="c-card__image c-card__image--empty"></div>
+                <div class="c-card__body">
+                  <div class="c-card__meta">
+                    <h3 class="c-card__title">MORE TO COME</h3>
+                    <p class="c-card__date">
+                      MONTH DD / YEAR &nbsp;|&nbsp; OFFICIAL MEDIA REPRESENTATIVE
+                    </p>
+                  </div>
+                  <p class="c-card__desc">
+                    My portfolio is constantly growing as I cover more shows and festivals.
+                    Looking forward to more coverage!
+                  </p>
+                </div>
+              </article>
+            </div>
+
+            <!-- ━━━ SLIDE 3 — MORE TO COME #3 ━━━ -->
+            <div class="embla__slide">
+              <article class="c-card c-card--placeholder" id="card-mtc-3">
+                <div class="c-card__image c-card__image--empty"></div>
+                <div class="c-card__body">
+                  <div class="c-card__meta">
+                    <h3 class="c-card__title">MORE TO COME</h3>
+                    <p class="c-card__date">
+                      MONTH DD / YEAR &nbsp;|&nbsp; OFFICIAL MEDIA REPRESENTATIVE
+                    </p>
+                  </div>
+                  <p class="c-card__desc">
+                    My portfolio is constantly growing as I cover more shows and festivals.
+                    Looking forward to more coverage!
+                  </p>
+                </div>
+              </article>
+            </div>
+
+            <!-- ━━━ SLIDE 4 — MORE TO COME #4 ━━━ -->
+            <div class="embla__slide">
+              <article class="c-card c-card--placeholder" id="card-mtc-4">
+                <div class="c-card__image c-card__image--empty"></div>
+                <div class="c-card__body">
+                  <div class="c-card__meta">
+                    <h3 class="c-card__title">MORE TO COME</h3>
+                    <p class="c-card__date">
+                      MONTH DD / YEAR &nbsp;|&nbsp; OFFICIAL MEDIA REPRESENTATIVE
+                    </p>
+                  </div>
+                  <p class="c-card__desc">
+                    My portfolio is constantly growing as I cover more shows and festivals.
+                    Looking forward to more coverage!
+                  </p>
+                </div>
+              </article>
+            </div>
+
+          </div><!-- /.embla__container -->
+        </div><!-- /.embla__viewport -->
+
+        <!-- Dot indicators — generated by JS using the Embla zip pattern -->
+        <div class="embla__dots" id="emblaDots"></div>
+
+      </div><!-- /.embla -->
+    </section>
+
+    <!-- ── FOOTER ── -->
+    <footer class="footer">
+      <div class="footer-logo-wrapper">
+       <a class="footer-logo" href="index.html">CARLV.SION</a>
+      </div>
+      <div class="footer-socials">
+        <a href="https://www.instagram.com/carlv.ision/" target="_blank" aria-label="Instagram">
+          <img src="images/logos/Instagram.svg" alt="Instagram" />
+        </a>
+        <a href="https://www.facebook.com/carl.valencia.5" target="_blank" aria-label="Facebook">
+          <img src="images/logos/Facebook.svg" alt="Facebook" />
+        </a>
+        <a href="#" target="_blank" aria-label="LinkedIn">
+          <img src="images/logos/LinkedIn.svg" alt="LinkedIn" />
+        </a>
+      </div>
+      <p class="footer-copy">Copyright ©2026 All rights reserved.</p>
+    </footer>
+
+  </main><!-- /.about-page -->
+
+  <!-- Back to top — same as gallery.html -->
+  <button class="back-top" id="backTop" aria-label="Back to top">↑</button>
+
+  <!-- Embla Carousel UMD from CDN — no npm or build step needed -->
+  <script src="https://unpkg.com/embla-carousel/embla-carousel.umd.js"></script>
+
+  <script>
+    /* ── Nav scroll ── */
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 40);
+    });
+
+    /* ── Hamburger ── */
+    const hamburger = document.getElementById('hamburger');
+    const drawer    = document.getElementById('navDrawer');
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      drawer.classList.toggle('open');
+      document.body.style.overflow = drawer.classList.contains('open') ? 'hidden' : '';
+    });
+    function closeDrawer() {
+      hamburger.classList.remove('open');
+      drawer.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    /* ── Scroll reveal ── */
+    const revealEls = document.querySelectorAll('.reveal');
+    const revObs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); revObs.unobserve(e.target); }
+      });
+    }, { threshold: 0.08 });
+    revealEls.forEach(el => revObs.observe(el));
+
+    /* ── Back to top (same logic as gallery.html) ── */
+    const backTop = document.getElementById('backTop');
+    window.addEventListener('scroll', () => {
+      const scrollY        = window.scrollY;
+      const distFromBottom = document.documentElement.scrollHeight - (scrollY + window.innerHeight);
+      backTop.classList.toggle('visible', scrollY > 400 && distFromBottom > 150);
+    });
+    backTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+    /* ════════════════════════════════════════════════════════════════
+       EMBLA CAROUSEL — Notable Projects
+    ════════════════════════════════════════════════════════════════ */
+
+    const emblaRoot  = document.getElementById('projectsEmbla');
+     const viewport   = emblaRoot.querySelector('.embla__viewport');
+     const dotsNode   = document.getElementById('emblaDots');
+  
+  // Init Embla
+  const embla = EmblaCarousel(viewport, {
+    loop:       true,     
+    startIndex: 0,        
+    align:      'center', 
+    dragFree:   false,    
+  });
+
+  // Pull the actual nodes that Embla is managing
+  const slideNodes = embla.slideNodes();
+
+  /* ── Dot buttons ── */
+  let dotNodes = [];
+
+  function addDotBtnsWithClickHandlers() {
+    // scrollSnapList() is the correct Embla v8 API
+    dotsNode.innerHTML = embla.scrollSnapList()
+      .map(() => '<button class="embla__dot" type="button"></button>')
+      .join('');
+
+    dotNodes = Array.from(dotsNode.querySelectorAll('.embla__dot'));
+    dotNodes.forEach((dot, i) => {
+      dot.addEventListener('click', () => embla.scrollTo(i), false);
+    });
+  }
+
+  function toggleDotButtonsActive() {
+    const selected = embla.selectedScrollSnap(); // Correct Embla v8 API
+    dotNodes.forEach((dot, i) => {
+      if (i === selected) {
+        dot.classList.add('embla__dot--selected');
+      } else {
+        dot.classList.remove('embla__dot--selected');
+      }
+    });
+  }
+
+  addDotBtnsWithClickHandlers();
+  toggleDotButtonsActive();
+
+  embla
+    .on('reinit', addDotBtnsWithClickHandlers)
+    .on('reinit', toggleDotButtonsActive)
+    .on('select', toggleDotButtonsActive);
+
+  /* ── Sync .is-selected class on real slide nodes ── */
+  function syncIsSelected() {
+    const idx = embla.selectedScrollSnap();
+    slideNodes.forEach((slide, i) => {
+      const selected = i === idx;
+      slide.classList.toggle('is-selected', selected);
+      /* Pointer feedback: pointer on dim cards, default on active */
+      slide.style.cursor = selected ? 'default' : 'pointer';
+    });
+  }
+
+  /* Click-to-select on non-active slides */
+  slideNodes.forEach((slide, i) => {
+    slide.addEventListener('click', () => {
+      // Embla's internal logic will automatically ignore this click if the user is dragging
+      if (embla.selectedScrollSnap() !== i) {
+        embla.scrollTo(i);
+      }
+    });
+  });
+
+  embla
+    .on('select', syncIsSelected)
+    .on('reinit', syncIsSelected);
+
+  syncIsSelected(); // run immediately on init
+  </script>
+</body>
+</html>

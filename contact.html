@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CARLV.SION — Contact</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Inter:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ── Custom Notifications ── -->
+  <div class="form-notification" id="notif-success" data-fs-success>Message Sent — I'll get back to you soon.</div>
+  <div class="form-notification" id="notif-error"   data-fs-error>Error — Please check your connection and try again.</div>
+
+  <nav class="nav" id="nav">
+    <div class="nav-logo-wrapper">
+      <a class="nav-logo" href="index.html">CARLV.SION</a>
+    </div>
+    <ul class="nav-links">
+      <li><a href="index.html">HOME</a></li>
+      <li><a href="gallery.html">GALLERY</a></li>
+      <li><a href="about.html">ABOUT</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a class="btn-outline active" href="contact.html">CONTACT ME</a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <div class="nav-drawer" id="navDrawer">
+    <a href="index.html"   onclick="closeDrawer()">HOME</a>
+    <a href="gallery.html" onclick="closeDrawer()">GALLERY</a>
+    <a href="about.html"   onclick="closeDrawer()">ABOUT</a>
+    <a href="contact.html" onclick="closeDrawer()" class="btn-outline" style="font-size:18px;">CONTACT ME</a>
+  </div>
+
+  <main class="contact-page reveal">
+    <div class="contact-container">
+
+      <div class="contact-left">
+        <h1 class="ap-display-title2">MESSAGE ME</h1>
+        <p class="ap-body" style="margin-top: -16px; margin-bottom: 16px;">
+          Whether you need a freelance photographer for an upcoming gig, concert, or a festival, let's make it happen.
+        </p>
+
+        <form class="contact-form" id="contact-form" novalidate>
+
+          <div class="form-group">
+            <label class="form-label" for="name">NAME*</label>
+            <input class="form-input" type="text" id="name" name="Name" placeholder="Your Name" required />
+            <span class="field-error" id="err-name"></span>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="email">EMAIL*</label>
+            <input class="form-input" type="email" id="email" name="Email" placeholder="your@email.com" required />
+            <span class="field-error" id="err-email"></span>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="phone">PHONE NUMBER*</label>
+            <input class="form-input" type="tel" id="phone" name="Phone" placeholder="09XX XXX XXXX" required />
+            <span class="field-error" id="err-phone"></span>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="subject">SUBJECT*</label>
+            <input class="form-input" type="text" id="subject" name="Subject" placeholder="Project Inquiry / Coverage" required />
+            <span class="field-error" id="err-subject"></span>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="message">MESSAGE*</label>
+            <textarea class="form-textarea" id="message" name="Message" placeholder="Your message here..." required></textarea>
+            <span class="field-error" id="err-message"></span>
+          </div>
+
+          <button type="submit" class="btn-outline btn-submit" id="submit-btn">SEND MESSAGE</button>
+
+        </form>
+      </div>
+
+      <div class="contact-right">
+        <h2 class="ap-display-title2" style="font-size: clamp(32px, 4vw, 48px);">LET'S CONNECT</h2>
+
+        <div class="contact-info-block">
+          <span class="form-label">EMAIL</span>
+          <a href="mailto:carlvsion@gmail.com" class="contact-link">carlvsion@gmail.com</a>
+        </div>
+
+        <div class="contact-info-block">
+          <span class="form-label">LOCATION</span>
+          <p class="contact-link">Manila, Philippines</p>
+        </div>
+
+        <div class="contact-info-block">
+          <span class="form-label">SOCIALS</span>
+          <div class="contact-socials">
+            <a href="https://www.instagram.com/carlv.ision/" target="_blank" aria-label="Instagram">
+              <img src="images/logos/Instagram.svg" alt="Instagram" />
+              INSTAGRAM
+            </a>
+            <a href="https://www.facebook.com/carl.valencia.5" target="_blank" aria-label="Facebook">
+              <img src="images/logos/Facebook.svg" alt="Facebook" />
+              FACEBOOK
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-logo-wrapper">
+       <a class="footer-logo" href="index.html">CARLV.SION</a>
+    </div>
+    <div class="footer-socials">
+      <a href="https://www.instagram.com/carlv.ision/" target="_blank" aria-label="Instagram">
+        <img src="images/logos/Instagram.svg" alt="Instagram" />
+      </a>
+      <a href="https://www.facebook.com/carl.valencia.5" target="_blank" aria-label="Facebook">
+        <img src="images/logos/Facebook.svg" alt="Facebook" />
+      </a>
+      <a href="#" target="_blank" aria-label="LinkedIn">
+        <img src="images/logos/LinkedIn.svg" alt="LinkedIn" />
+      </a>
+    </div>
+    <p class="footer-copy">Copyright ©2026 All rights reserved.</p>
+  </footer>
+
+  <script>
+    /* ── Nav scroll ── */
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 40);
+    });
+
+    /* ── Hamburger ── */
+    const hamburger = document.getElementById('hamburger');
+    const drawer    = document.getElementById('navDrawer');
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      drawer.classList.toggle('open');
+      document.body.style.overflow = drawer.classList.contains('open') ? 'hidden' : '';
+    });
+    function closeDrawer() {
+      hamburger.classList.remove('open');
+      drawer.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    /* ── Scroll reveal ── */
+    const revealEls = document.querySelectorAll('.reveal');
+    const revObs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); revObs.unobserve(e.target); }
+      });
+    }, { threshold: 0.08 });
+    revealEls.forEach(el => revObs.observe(el));
+
+    /* ── Notification helper ── */
+    function showNotif(id, duration = 5000) {
+      const el = document.getElementById(id);
+      el.style.display = 'flex';
+      // Restart CSS animation
+      el.style.animation = 'none';
+      el.offsetHeight; // force reflow
+      el.style.animation = '';
+      clearTimeout(el._hideTimer);
+      el._hideTimer = setTimeout(() => { el.style.display = 'none'; }, duration);
+    }
+
+    /* ── Field validation config ── */
+    const validations = {
+      name:    { el: document.getElementById('name'),    err: document.getElementById('err-name'),    msg: 'Name is required.' },
+      email:   { el: document.getElementById('email'),   err: document.getElementById('err-email'),   msg: 'A valid email is required.' },
+      phone:   { el: document.getElementById('phone'),   err: document.getElementById('err-phone'),   msg: 'Phone number is required.' },
+      subject: { el: document.getElementById('subject'), err: document.getElementById('err-subject'), msg: 'Subject is required.' },
+      message: { el: document.getElementById('message'), err: document.getElementById('err-message'), msg: 'Message is required.' },
+    };
+
+    function validateField(key) {
+      const { el, err, msg } = validations[key];
+      const isEmpty  = el.value.trim() === '';
+      const badEmail = key === 'email' && !isEmpty && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(el.value.trim());
+      if (isEmpty || badEmail) {
+        err.textContent = badEmail ? 'Please enter a valid email address.' : msg;
+        el.style.borderColor = '#ff4444';
+        return false;
+      }
+      err.textContent = '';
+      el.style.borderColor = '';
+      return true;
+    }
+
+    // Live: clear error as soon as the user fixes the field
+    Object.keys(validations).forEach(key => {
+      validations[key].el.addEventListener('input', () => validateField(key));
+    });
+
+    /* ── Form submit ── */
+    const form      = document.getElementById('contact-form');
+    const submitBtn = document.getElementById('submit-btn');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      // Run all validations; collect results as array then check all true
+      const allValid = Object.keys(validations).map(validateField).every(Boolean);
+      if (!allValid) return;
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'SENDING...';
+
+      try {
+        const res = await fetch('https://formspree.io/f/xbdqkgqj', {
+          method: 'POST',
+          headers: { 'Accept': 'application/json' },
+          body: new FormData(form),
+        });
+
+        if (res.ok) {
+          showNotif('notif-success');
+          form.reset();
+          Object.values(validations).forEach(({ el }) => el.style.borderColor = '');
+        } else {
+          showNotif('notif-error');
+        }
+      } catch (_) {
+        showNotif('notif-error');
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'SEND MESSAGE';
+      }
+    });
+  </script>
+
+</body>
+</html>

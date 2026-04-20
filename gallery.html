@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CARLV.SION — Gallery</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Inter:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ══ NAV ══ -->
+  <nav class="nav" id="nav">
+    <div class="nav-logo-wrapper">
+      <a class="nav-logo" href="index.html">CARLV.SION</a>
+    </div>
+    <ul class="nav-links">
+      <li><a href="index.html">HOME</a></li>
+      <li><a href="#" class="active">GALLERY</a></li>
+      <li><a href="about.html">ABOUT</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a class="btn-outline" href="contact.html">CONTACT ME</a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- Mobile drawer -->
+  <div class="nav-drawer" id="navDrawer">
+    <a href="index.html"       onclick="closeDrawer()">HOME</a>
+    <a href="#"                onclick="closeDrawer()">GALLERY</a>
+    <a href="about.html" onclick="closeDrawer()">ABOUT</a>
+    <a href="contact.html" onclick="closeDrawer()" class="btn-outline" style="font-size:18px;">CONTACT ME</a>
+  </div>
+
+  <!-- ══ PAGE ══ -->
+  <main class="page">
+    <h1 class="gallery-title">GALLERY</h1>
+
+    <!-- Masonry grid — columns injected by JS -->
+    <div class="masonry" id="masonry"></div>
+
+    <!-- ── FOOTER ── -->
+    <footer class="footer">
+      <div class="footer-logo-wrapper">
+       <a class="footer-logo" href="index.html">CARLV.SION</a>
+      </div>
+      <div class="footer-socials">
+        <a href="https://www.instagram.com/carlv.ision/" target="_blank" aria-label="Instagram">
+          <img src="images/logos/Instagram.svg" alt="Instagram" />
+        </a>
+        <a href="https://www.facebook.com/carl.valencia.5" target="_blank" aria-label="Facebook">
+          <img src="images/logos/Facebook.svg" alt="Facebook" />
+        </a>
+        <a href="#" target="_blank" aria-label="LinkedIn">
+          <img src="images/logos/LinkedIn.svg" alt="LinkedIn" />
+        </a>
+      </div>
+      <p class="footer-copy">Copyright ©2026 All rights reserved.</p>
+    </footer>
+  </main>
+
+  <!-- ══ LIGHTBOX ══ -->
+  <div class="lightbox" id="lightbox">
+    <button class="lb-close" id="lbClose" aria-label="Close">&#x2715;</button>
+    <button class="lb-prev"  id="lbPrev"  aria-label="Previous">&#x2039;</button>
+    <img class="lb-img" id="lbImg" src="" alt="" />
+    <button class="lb-next"  id="lbNext"  aria-label="Next">&#x203A;</button>
+    <span class="lb-counter" id="lbCounter"></span>
+  </div>
+
+  <!-- ══ BACK TO TOP ══ -->
+  <button class="back-top" id="backTop" aria-label="Back to top">↑</button>
+
+  <!-- ══ SCRIPTS ══ -->
+  <script>
+    /* ── Photo data ─────────────────────────────────────────────────────
+       Column layout (3 cols desktop):
+         Col 0: landscape-first alternating  (L P L P …)
+         Col 1: portrait-first  alternating  (P L P L …)
+         Col 2: landscape-first alternating  (L P L P …)
+    ─────────────────────────────────────────────────────────────────── */
+    const photos = [
+      // Col 0 — 21 images
+      { src: "images/photos/gallery/IMG_3068.webp",     type: "landscape", col: 0 },
+      { src: "images/photos/gallery/IMG_2726.webp",     type: "portrait",  col: 0 },
+      { src: "images/photos/gallery/IMG_4964.webp",     type: "landscape", col: 0 },
+      { src: "images/photos/gallery/IMG_3229.webp",     type: "portrait",  col: 0 },
+      { src: "images/photos/gallery/IMG_3626.webp",     type: "landscape", col: 0 },
+      { src: "images/photos/gallery/IMG_3660.webp",     type: "portrait",  col: 0 },
+      { src: "images/photos/gallery/IMG_4243.webp",     type: "landscape", col: 0 },
+      { src: "images/photos/gallery/IMG_3687.webp",     type: "portrait",  col: 0 },
+      { src: "images/photos/gallery/IMG_3714.webp",     type: "landscape", col: 0 },
+      { src: "images/photos/gallery/IMG_4126.webp",     type: "portrait",  col: 0 },
+      { src: "images/photos/gallery/IMG_4653.webp",     type: "landscape", col: 0 },
+      { src: "images/photos/gallery/IMG_5182-3.webp",   type: "portrait",  col: 0 },
+      { src: "images/photos/gallery/IMG_2991.webp",     type: "landscape", col: 0 },
+      { src: "images/photos/gallery/IMG_5014.webp",     type: "portrait",  col: 0 },
+      { src: "images/photos/gallery/IMG_4755.webp",     type: "landscape", col: 0 },
+      { src: "images/photos/gallery/IMG_4346.webp",     type: "portrait",  col: 0 },
+      { src: "images/photos/gallery/IMG_5035.webp",     type: "landscape", col: 0 },
+      { src: "images/photos/gallery/IMG_3643.webp",     type: "portrait",  col: 0 },
+      { src: "images/photos/gallery/IMG_3637.webp",     type: "landscape", col: 0 },
+      { src: "images/photos/gallery/IMG_3878.webp",     type: "portrait",  col: 0 },
+      { src: "images/photos/gallery/IMG_1724.webp",     type: "landscape", col: 0 },
+
+      // Col 1 — 20 images
+      { src: "images/photos/gallery/IMG_2708.webp",        type: "portrait",  col: 1 },
+      { src: "images/photos/gallery/IMG_3219.webp",        type: "landscape", col: 1 },
+      { src: "images/photos/gallery/IMG_3235.webp",        type: "portrait",  col: 1 },
+      { src: "images/photos/gallery/IMG_3542.webp",        type: "landscape", col: 1 },
+      { src: "images/photos/gallery/IMG_3498.webp",        type: "portrait",  col: 1 },
+      { src: "images/photos/gallery/IMG_4889.webp",        type: "landscape", col: 1 },
+      { src: "images/photos/gallery/IMG_4172.webp",        type: "portrait",  col: 1 },
+      { src: "images/photos/gallery/IMG_4191.webp",        type: "landscape", col: 1 },
+      { src: "images/photos/gallery/IMG_5395-final.webp",  type: "portrait",  col: 1 },
+      { src: "images/photos/gallery/IMG_4554.webp",        type: "landscape", col: 1 },
+      { src: "images/photos/gallery/IMG_1750.webp",        type: "portrait",  col: 1 },
+      { src: "images/photos/gallery/IMG_4109.webp",        type: "landscape", col: 1 },
+      { src: "images/photos/gallery/IMG_5892.webp",        type: "portrait",  col: 1 },
+      { src: "images/photos/gallery/IMG_4985.webp",        type: "landscape", col: 1 },
+      { src: "images/photos/gallery/IMG_2947.webp",        type: "portrait",  col: 1 },
+      { src: "images/photos/gallery/IMG_4399.webp",        type: "landscape", col: 1 },
+      { src: "images/photos/gallery/IMG_5345-final.webp",  type: "portrait",  col: 1 },
+      { src: "images/photos/gallery/IMG_4783.webp",        type: "landscape", col: 1 },
+      { src: "images/photos/gallery/IMG_4693.webp",        type: "portrait",  col: 1 },
+      { src: "images/photos/gallery/IMG_3157.webp",        type: "landscape", col: 1 },
+
+      // Col 2 — 21 images
+      { src: "images/photos/gallery/IMG_3219.webp",    type: "landscape", col: 2 },
+      { src: "images/photos/gallery/IMG_2971.webp",    type: "portrait",  col: 2 },
+      { src: "images/photos/gallery/IMG_4979.webp",    type: "landscape", col: 2 },
+      { src: "images/photos/gallery/IMG_4921.webp",    type: "portrait",  col: 2 },
+      { src: "images/photos/gallery/IMG_4914.webp",    type: "landscape", col: 2 },
+      { src: "images/photos/gallery/IMG_4165.webp",    type: "portrait",  col: 2 },
+      { src: "images/photos/gallery/IMG_3521.webp",    type: "landscape", col: 2 },
+      { src: "images/photos/gallery/IMG_4048.webp",    type: "portrait",  col: 2 },
+      { src: "images/photos/gallery/IMG_2683.webp",    type: "landscape", col: 2 },
+      { src: "images/photos/gallery/IMG_4262.webp",    type: "portrait",  col: 2 },
+      { src: "images/photos/gallery/IMG_5087.webp",    type: "landscape", col: 2 },
+      { src: "images/photos/gallery/IMG_4236.webp",    type: "portrait",  col: 2 },
+      { src: "images/photos/gallery/IMG_5899-2.webp",  type: "landscape", col: 2 },
+      { src: "images/photos/gallery/IMG_4317.webp",    type: "portrait",  col: 2 },
+      { src: "images/photos/gallery/IMG_2743.webp",    type: "landscape", col: 2 },
+      { src: "images/photos/gallery/IMG_4307.webp",    type: "portrait",  col: 2 },
+      { src: "images/photos/gallery/IMG_3570.webp",    type: "landscape", col: 2 },
+      { src: "images/photos/gallery/IMG_5039.webp",    type: "portrait",  col: 2 },
+      { src: "images/photos/gallery/IMG_3620.webp",    type: "landscape", col: 2 },
+      { src: "images/photos/gallery/IMG_3118.webp",    type: "portrait",  col: 2 },
+      { src: "images/photos/gallery/IMG_4210.webp",    type: "landscape", col: 2 },
+    ];
+
+    /* ── Build grid ────────────────────────────────────────────────── */
+    const masonry = document.getElementById('masonry');
+    let colCount  = getColCount();
+    let photoEls  = [];
+
+    function getColCount() {
+      return window.innerWidth <= 640 ? 2 : 3;
+    }
+
+    function buildGrid() {
+      colCount = getColCount();
+      masonry.innerHTML = '';
+      photoEls = [];
+
+      const cols = Array.from({ length: colCount }, () => {
+        const div = document.createElement('div');
+        div.className = 'masonry-col';
+        masonry.appendChild(div);
+        return div;
+      });
+
+      if (colCount === 3) {
+        // Desktop/tablet: use exact per-column grouping
+        const grouped = [[], [], []];
+        photos.forEach(p => grouped[p.col].push(p));
+        grouped.forEach((group, c) => {
+          group.forEach(p => cols[c].appendChild(makePhotoEl(p)));
+        });
+
+      } else {
+        // Mobile 2-col: round-robin, then enforce strict L/P alternation per column
+        // Col 0 starts landscape (L P L P …)
+        // Col 1 starts portrait  (P L P L …)
+        const grouped = [[], [], []];
+        photos.forEach(p => grouped[p.col].push(p));
+        const flat = [];
+        const max = Math.max(...grouped.map(g => g.length));
+        for (let i = 0; i < max; i++) {
+          grouped.forEach(g => { if (g[i]) flat.push(g[i]); });
+        }
+
+        const buckets = [[], []];
+        flat.forEach((p, i) => buckets[i % 2].push(p));
+
+        const startTypes = ['landscape', 'portrait'];
+        const altMap     = { landscape: 'portrait', portrait: 'landscape' };
+
+        buckets.forEach((bucket, colIdx) => {
+          let currentType = startTypes[colIdx];
+          bucket.forEach(p => {
+            cols[colIdx].appendChild(makePhotoEl({ ...p, type: currentType }));
+            currentType = altMap[currentType];
+          });
+        });
+      }
+
+      observePhotos();
+    }
+
+    function makePhotoEl(data) {
+      const div = document.createElement('div');
+      div.className = `photo ${data.type}`;
+      div.dataset.index = photoEls.length;
+      div.innerHTML = `
+        <img src="${data.src}" alt="Gallery photo ${photoEls.length + 1}" loading="lazy" />
+        <div class="photo-icon">
+          <svg viewBox="0 0 24 24"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+        </div>`;
+      div.addEventListener('click', () => openLightbox(parseInt(div.dataset.index)));
+      photoEls.push(div);
+      return div;
+    }
+
+    /* ── Scroll reveal ─────────────────────────────────────────────── */
+    let revealObserver;
+    function observePhotos() {
+      if (revealObserver) revealObserver.disconnect();
+      revealObserver = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            setTimeout(() => e.target.classList.add('visible'), 40);
+            revealObserver.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+      document.querySelectorAll('.photo').forEach(el => revealObserver.observe(el));
+    }
+
+    /* ── Lightbox ──────────────────────────────────────────────────── */
+    const lightbox  = document.getElementById('lightbox');
+    const lbImg     = document.getElementById('lbImg');
+    const lbCounter = document.getElementById('lbCounter');
+    let   lbIdx     = 0;
+
+    function getAllSrcs() {
+      return photoEls.map(el => el.querySelector('img').src);
+    }
+
+    function openLightbox(idx) {
+      lbIdx = idx;
+      updateLightbox();
+      lightbox.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function updateLightbox() {
+      const srcs = getAllSrcs();
+      lbImg.src = srcs[lbIdx];
+      lbImg.alt = `Gallery photo ${lbIdx + 1}`;
+      lbCounter.textContent = `${lbIdx + 1} / ${srcs.length}`;
+    }
+
+    function closeLightbox() {
+      lightbox.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    document.getElementById('lbClose').addEventListener('click', closeLightbox);
+    document.getElementById('lbPrev').addEventListener('click', () => {
+      lbIdx = (lbIdx - 1 + photoEls.length) % photoEls.length;
+      updateLightbox();
+    });
+    document.getElementById('lbNext').addEventListener('click', () => {
+      lbIdx = (lbIdx + 1) % photoEls.length;
+      updateLightbox();
+    });
+    lightbox.addEventListener('click', e => {
+      if (e.target === lightbox) closeLightbox();
+    });
+    document.addEventListener('keydown', e => {
+      if (!lightbox.classList.contains('open')) return;
+      if (e.key === 'Escape')      closeLightbox();
+      if (e.key === 'ArrowLeft')  { lbIdx = (lbIdx - 1 + photoEls.length) % photoEls.length; updateLightbox(); }
+      if (e.key === 'ArrowRight') { lbIdx = (lbIdx + 1) % photoEls.length; updateLightbox(); }
+    });
+
+    /* ── Touch swipe on lightbox ───────────────────────────────────── */
+    let lbTouchX = null;
+    lightbox.addEventListener('touchstart', e => { lbTouchX = e.touches[0].clientX; });
+    lightbox.addEventListener('touchend', e => {
+      if (lbTouchX === null) return;
+      const dx = e.changedTouches[0].clientX - lbTouchX;
+      if (Math.abs(dx) > 40) {
+        lbIdx = dx < 0
+          ? (lbIdx + 1) % photoEls.length
+          : (lbIdx - 1 + photoEls.length) % photoEls.length;
+        updateLightbox();
+      }
+      lbTouchX = null;
+    });
+
+    /* ── Nav scroll + back-to-top ──────────────────────────────────── */
+    const nav     = document.getElementById('nav');
+    const backTop = document.getElementById('backTop');
+
+    window.addEventListener('scroll', () => {
+      const scrollY         = window.scrollY;
+      const scrollHeight    = document.documentElement.scrollHeight;
+      const windowHeight    = window.innerHeight;
+      const distFromBottom  = scrollHeight - (scrollY + windowHeight);
+
+      nav.classList.toggle('scrolled', scrollY > 60);
+
+      // Show back-to-top only when >400px down AND >150px from the bottom
+      if (scrollY > 400 && distFromBottom > 150) {
+        backTop.classList.add('visible');
+      } else {
+        backTop.classList.remove('visible');
+      }
+    });
+
+    backTop.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    /* ── Hamburger ─────────────────────────────────────────────────── */
+    const hamburger = document.getElementById('hamburger');
+    const drawer    = document.getElementById('navDrawer');
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      drawer.classList.toggle('open');
+      document.body.style.overflow = drawer.classList.contains('open') ? 'hidden' : '';
+    });
+    function closeDrawer() {
+      hamburger.classList.remove('open');
+      drawer.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    /* ── Responsive rebuild ────────────────────────────────────────── */
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        const newCount = getColCount();
+        if (newCount !== colCount) buildGrid();
+      }, 200);
+    });
+
+    /* ── Init ──────────────────────────────────────────────────────── */
+    buildGrid();
+  </script>
+</body>
+</html>

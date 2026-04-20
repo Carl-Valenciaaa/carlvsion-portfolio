@@ -1,0 +1,14 @@
+# OS Metadata
+.DS_Store
+Thumbs.db
+
+# Editor settings
+.vscode/
+.idea/
+
+# Local Environment
+node_modules/
+.env
+
+# Formspree / Build caches
+.cache/
