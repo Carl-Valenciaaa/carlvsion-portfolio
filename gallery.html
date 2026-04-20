@@ -176,39 +176,45 @@
         return div;
       });
 
+      // 1. Group photos by their original desktop column design
+      const grouped = [[], [], []];
+      photos.forEach(p => grouped[p.col].push(p));
+
       if (colCount === 3) {
-        // Desktop/tablet: use exact per-column grouping
-        const grouped = [[], [], []];
-        photos.forEach(p => grouped[p.col].push(p));
+        // DESKTOP: Keep the exact 3-column color and layout you designed
         grouped.forEach((group, c) => {
           group.forEach(p => cols[c].appendChild(makePhotoEl(p)));
         });
 
       } else {
-        // Mobile 2-col: round-robin, then enforce strict L/P alternation per column
-        // Col 0 starts landscape (L P L P …)
-        // Col 1 starts portrait  (P L P L …)
-        const grouped = [[], [], []];
-        photos.forEach(p => grouped[p.col].push(p));
-        const flat = [];
-        const max = Math.max(...grouped.map(g => g.length));
-        for (let i = 0; i < max; i++) {
-          grouped.forEach(g => { if (g[i]) flat.push(g[i]); });
+        // MOBILE (2 Columns): Preserve the color gradient AND perfect alternation
+        const masterList = [];
+        const maxRows = Math.max(grouped[0].length, grouped[1].length, grouped[2].length);
+        
+        // Read left-to-right, top-to-bottom to maintain the color flow
+        for(let i = 0; i < maxRows; i++) {
+          if(grouped[0][i]) masterList.push(grouped[0][i]);
+          if(grouped[1][i]) masterList.push(grouped[1][i]);
+          if(grouped[2][i]) masterList.push(grouped[2][i]);
         }
 
-        const buckets = [[], []];
-        flat.forEach((p, i) => buckets[i % 2].push(p));
+        // masterList naturally alternates: L, P, L, P, L, P...
+        // To prevent one column from getting all Landscapes, we criss-cross the drop order
+        for (let i = 0; i < masterList.length; i += 2) {
+          const itemA = masterList[i];
+          const itemB = masterList[i + 1];
 
-        const startTypes = ['landscape', 'portrait'];
-        const altMap     = { landscape: 'portrait', portrait: 'landscape' };
-
-        buckets.forEach((bucket, colIdx) => {
-          let currentType = startTypes[colIdx];
-          bucket.forEach(p => {
-            cols[colIdx].appendChild(makePhotoEl({ ...p, type: currentType }));
-            currentType = altMap[currentType];
-          });
-        });
+          const rowIdx = Math.floor(i / 2);
+          if (rowIdx % 2 === 0) {
+            // Even rows: Col 0 gets Item A, Col 1 gets Item B
+            if (itemA) cols[0].appendChild(makePhotoEl(itemA));
+            if (itemB) cols[1].appendChild(makePhotoEl(itemB));
+          } else {
+            // Odd rows: Col 0 gets Item B, Col 1 gets Item A
+            if (itemB) cols[0].appendChild(makePhotoEl(itemB));
+            if (itemA) cols[1].appendChild(makePhotoEl(itemA));
+          }
+        }
       }
 
       observePhotos();
