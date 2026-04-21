@@ -416,6 +416,9 @@
     .on('reinit', syncIsSelected);
 
   syncIsSelected(); // run immediately on init
+
+  // Prevents the right-click menu to protect your photography
+      document.addEventListener('contextmenu', event => event.preventDefault());
   </script>
 </body>
 </html>
