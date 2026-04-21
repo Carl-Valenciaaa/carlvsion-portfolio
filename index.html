@@ -228,6 +228,9 @@
       }
     }
     document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+
+    // Prevents the right-click menu to protect your photography
+    document.addEventListener('contextmenu', event => event.preventDefault());
   </script>
 
 </body>
