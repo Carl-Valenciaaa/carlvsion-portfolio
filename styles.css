@@ -774,11 +774,43 @@ main {
   display: block;
 }
 
-.full-width-section {
+/* 1. The Global Wrapper 
+   Apply this to the div INSIDE your sections, including the Hero and Footer */
+.content-wrapper {
   width: 100%;
+  max-width: 1440px;
+  margin: 0 auto; /* Centers the text/content */
+  padding: 0 var(--section-px); /* Maintains your side spacing */
+  position: relative; /* Ensures it stays above background images */
+  z-index: 2;
+}
+
+/* 2. The Hero fix
+   Ensure the hero container itself remains full-screen */
+.hero {
+  width: 100%;
+  height: 100vh;
   display: flex;
-  justify-content: center; /* Centers the inner content */
+  align-items: center; /* Centers the wrapper vertically */
+  justify-content: center; /* Centers the wrapper horizontally */
   overflow: hidden;
+  position: relative;
+}
+
+/* Ensure the background image ignores the wrapper's limits */
+.hero-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.hero-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Keeps image from distorting */
 }
 
 /* ═══════════════════════════════════════════════════════════
