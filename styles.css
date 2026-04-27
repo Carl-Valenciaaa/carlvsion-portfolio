@@ -722,6 +722,8 @@ main {
    RESPONSIVE
 ═══════════════════════════════════════════════════════════ */
 
+.desktop-hidden {display: none; }
+
 /* ── Tablet (≤ 900px) ── */
 @media (max-width: 900px) {
   /* index — about stacks vertically */
