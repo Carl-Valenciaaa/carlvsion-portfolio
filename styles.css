@@ -764,9 +764,10 @@ body {
   min-height: 100vh;
 }
 
-/* Every direct child of about-page is constrained to the same max-width
-   so sections never stretch endlessly on ultra-wide screens. */
-.about-page > * {
+/* Apply the constraint to the main content area only.
+   This keeps the footer and nav backgrounds full-width, 
+   but keeps the text and images centered. */
+main {
   width: 100%;
   max-width: 1440px;
 }
