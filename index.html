@@ -69,6 +69,7 @@
     <div class="scroll-cue"><span></span></div>
   </section>
 
+  <main>
   <!-- ══ PAGE CONTENTS ══ -->
   <div class="page-contents">
 
@@ -106,14 +107,14 @@
         <div class="gallery-item" onclick="openLightbox(this)">
           <img src="images/photos/gallery/IMG_4985.webp" alt="Gallery photo 10" />
         </div>
-        <div class="gallery-item" onclick="openLightbox(this)">
+        <div class="gallery-item desktop-hidden" onclick="openLightbox(this)">
           <img src="images/photos/gallery/IMG_4554.webp" alt="Gallery photo 11" />
         </div>
-        <div class="gallery-item" onclick="openLightbox(this)">
+        <div class="gallery-item desktop-hidden" onclick="openLightbox(this)">
           <img src="images/photos/gallery/IMG_4653.webp" alt="Gallery photo 12" />
         </div>
       </div>
-      <a class="btn-outline btn-see-all" href="gallery">SEE ALL</a>
+      <a class="btn-outline" href="gallery">SEE ALL</a>
     </section>
 
     <!-- ── ABOUT ── -->
@@ -130,7 +131,10 @@
       </div>
     </section>
 
-    <!-- ── FOOTER ── -->
+  </div><!-- end page-contents -->
+  </main>
+
+  <!-- ── FOOTER ── -->
     <footer class="footer">
       <div class="footer-logo-wrapper">
        <a class="footer-logo" href="index">CARLV.SION</a>
@@ -148,9 +152,7 @@
       </div>
       <p class="footer-copy">Copyright ©2026 All rights reserved.</p>
     </footer>
-
-  </div><!-- end page-contents -->
-
+  
   <!-- ══ LIGHTBOX ══ -->
   <div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
     <button class="lightbox-close" onclick="closeLightbox()" aria-label="Close">&#x2715;</button>
