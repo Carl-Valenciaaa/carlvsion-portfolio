@@ -724,7 +724,7 @@ main {
 
 .desktop-hidden {display: none; }
 
-@media (max-width: 1315px) {
+@media (max-width: 1316px) {
    .desktop-hidden {display: flex; }
 }
 
