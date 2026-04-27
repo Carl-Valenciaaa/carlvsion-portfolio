@@ -774,6 +774,12 @@ main {
   display: block;
 }
 
+.full-width-section {
+  width: 100%;
+  display: flex;
+  justify-content: center; /* Centers the inner content */
+  overflow: hidden;
+}
 
 /* ═══════════════════════════════════════════════════════════
    ABOUT PAGE — SHARED DISPLAY TITLE
