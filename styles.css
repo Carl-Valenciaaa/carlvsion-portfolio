@@ -763,6 +763,16 @@ body {
   min-height: 100vh;
 }
 
+/* Inner content cap — prevents sections from stretching too wide on large monitors */
+.ap-hero,
+.ap-section {
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  box-sizing: border-box;
+}
+
 
 /* ═══════════════════════════════════════════════════════════
    ABOUT PAGE — SHARED DISPLAY TITLE
@@ -1009,10 +1019,12 @@ body {
 }
 
 /* All slides are the same flex-basis — Embla measures this once at init.
-   Changing it mid-life breaks position tracking. */
+   Changing it mid-life breaks position tracking. 
+   Using min() instead of clamp with vw keeps this zoom-safe — vw is based
+   on the layout viewport which doesn't change with browser zoom. */
 .embla__slide {
-  flex: 0 0 clamp(280px, 38vw, 520px);
-  min-width: 0;
+  flex: 0 0 min(520px, 38vw);
+  min-width: 280px;
   padding-left: var(--carousel-gap);
   /* GPU layer so transform is compositor-only */
   transform: translate3d(0, 0, 0);
@@ -1130,6 +1142,136 @@ body {
 
 
 /* ═══════════════════════════════════════════════════════════
+   ABOUT PAGE — UPCOMING HIGHLIGHTS
+═══════════════════════════════════════════════════════════ */
+.ap-upcoming {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(24px, 3vw, 40px);
+}
+
+/* ── Event list ── */
+.ap-upcoming-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.ap-event-row {
+  display: flex;
+  align-items: center;
+  gap: clamp(16px, 3vw, 40px);
+  padding: clamp(20px, 2.5vw, 32px) clamp(16px, 2.5vw, 32px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: none;
+  transition: background 0.2s;
+}
+
+.ap-event-row:last-child {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.ap-event-row:hover {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+/* ── Date block ── */
+.ap-event-date {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  width: clamp(52px, 5.5vw, 72px);
+  aspect-ratio: 1;
+  flex-shrink: 0;
+  gap: 1px;
+}
+
+.ap-event-month {
+  font-family: var(--body-font);
+  font-weight: 700;
+  font-size: clamp(9px, 0.83vw, 11px);
+  letter-spacing: 0.12em;
+  color: var(--color-zinc-500);
+  text-transform: uppercase;
+}
+
+.ap-event-day {
+  font-family: var(--display-font);
+  font-size: clamp(22px, 2.5vw, 34px);
+  line-height: 1;
+  color: var(--white);
+}
+
+/* ── Event info ── */
+.ap-event-info {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+
+.ap-event-title {
+  font-family: var(--sub-display-font);
+  font-size: clamp(16px, 1.67vw, 24px);
+  letter-spacing: 0.03em;
+  color: var(--white);
+  line-height: 1.1;
+}
+
+.ap-event-role {
+  font-family: var(--body-font);
+  font-size: clamp(11px, 0.9vw, 13px);
+  color: var(--color-zinc-500);
+  letter-spacing: 0.04em;
+}
+
+.ap-event-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 2px;
+}
+
+.ap-event-tag {
+  font-family: var(--body-font);
+  font-weight: 700;
+  font-size: clamp(9px, 0.78vw, 11px);
+  letter-spacing: 0.1em;
+  color: var(--white);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  padding: 3px 10px;
+}
+
+.ap-event-venue {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-family: var(--body-font);
+  font-size: clamp(11px, 0.9vw, 13px);
+  color: var(--color-zinc-500);
+  letter-spacing: 0.04em;
+}
+
+.ap-event-venue svg {
+  opacity: 0.6;
+  flex-shrink: 0;
+}
+
+/* ── Tagline ── */
+.ap-upcoming-sub {
+  font-family: var(--body-font);
+  font-size: clamp(12px, 0.97vw, 14px);
+  color: var(--color-zinc-500);
+  letter-spacing: 0.03em;
+  line-height: 1.6;
+}
+
+
+/* ═══════════════════════════════════════════════════════════
    ABOUT PAGE — RESPONSIVE
 ═══════════════════════════════════════════════════════════ */
 
@@ -1145,7 +1287,11 @@ body {
   .ap-cards { flex-direction: column; }
   .ap-card  { width: 100%; }
   .ap-tech-grid { grid-template-columns: 1fr; }
-  .embla__slide { flex: 0 0 clamp(240px, 78vw, 320px); }
+  .embla__slide { flex: 0 0 min(320px, 78vw); min-width: 240px; }
+
+  /* Upcoming — let title wrap naturally on small screens */
+  .ap-event-title { white-space: normal; }
+  .ap-event-tag { font-size: 9px; }
 }
 
 /* ═══════════════════════════════════════════════════════════
@@ -1217,7 +1363,8 @@ body {
 }
 
 .btn-submit {
-  align-self: flex-start;
+  align-self: stretch;   /* full width — matches form inputs */
+  width: 100%;
   padding: 12px 32px;
   margin-top: 8px;
 }
