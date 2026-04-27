@@ -545,6 +545,7 @@ main {
   gap: clamp(40px, 6.67vw, 96px);
   align-items: center;
   justify-content: center;
+  padding-bottom: 40px;
 }
 
 .about-text {
