@@ -38,6 +38,16 @@ body {
   overflow-x: hidden;
 }
 
+/* Apply the constraint to the main content area only.
+   This keeps the footer and nav backgrounds full-width, 
+   but keeps the text and images centered. */
+main {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto; /* This centers the box */
+  display: block;
+}
+
 /* ── Scrollbar ── */
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: var(--black); }
@@ -718,6 +728,8 @@ body {
   .about-section { flex-direction: column; }
   .about-photo { width: 100%; min-width: 0; max-width: 100%; aspect-ratio: 4/3; }
 
+   .desktop-hidden {display: flex; }
+
   /* nav collapses to hamburger */
   .nav-links, .nav-cta { display: none; }
   .hamburger { display: flex; }
@@ -735,6 +747,7 @@ body {
 
   /* index gallery grid — 2 columns */
   .gallery-item { min-width: calc(50% - 5px); }
+   .desktop-hidden {display: flex; }
 
   /* footer stacks vertically */
   .footer { flex-direction: column; align-items: flex-start; }
@@ -747,6 +760,7 @@ body {
 /* ── Small mobile (≤ 360px) ── */
 @media (max-width: 360px) {
   .gallery-item { min-width: 100%; }
+   .desktop-hidden {display: flex; }
 }
 
 
@@ -763,17 +777,6 @@ body {
   background: var(--black);
   min-height: 100vh;
 }
-
-/* Apply the constraint to the main content area only.
-   This keeps the footer and nav backgrounds full-width, 
-   but keeps the text and images centered. */
-main {
-  width: 100%;
-  max-width: 1440px;
-  margin: 0 auto; /* This centers the box */
-  display: block;
-}
-
 
 /* ═══════════════════════════════════════════════════════════
    ABOUT PAGE — SHARED DISPLAY TITLE
