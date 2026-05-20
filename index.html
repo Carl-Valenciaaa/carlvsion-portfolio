@@ -59,7 +59,7 @@
   <!-- ══ HERO ══ -->
   <section class="hero" id="hero">
     <div class="hero-bg">
-      <video autoplay loop muted playsinline controls="false" poster="images/photos/gallery/IMG_3127.webp">
+      <video autoplay loop muted playsinline preload="auto" poster="images/photos/gallery/IMG_3127.webp">
         <source src="videos/BackgroundCarlVsion.mp4" type="video/mp4" />
         <img src="images/photos/gallery/IMG_3127.webp" alt="Hero Background" />
       </video>
@@ -164,6 +164,20 @@
 
   <!-- ══ SCRIPTS ══ -->
   <script>
+    /* Video Hero BG */
+    document.addEventListener('DOMContentLoaded', () => {
+    const heroVideo = document.querySelector('.hero-bg video');
+    
+    if (heroVideo) {
+      // Attempt to play the video programmatically
+      heroVideo.play().catch((error) => {
+        // If autoplay is blocked by iOS Low Power Mode/Slow Connection
+        console.log("Autoplay blocked by device settings. Cleaning up UI.");
+        heroVideo.style.display = 'none'; // Completely removes the video and the stubborn play button
+      });
+    }
+  });
+    
     /* ── Nav scroll ── */
     const nav = document.getElementById('nav');
     window.addEventListener('scroll', () => {
