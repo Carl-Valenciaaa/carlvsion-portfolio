@@ -402,6 +402,8 @@ main {
   height: 100%;
   object-fit: cover;
   object-position: center;
+
+   pointer-events: none;
 }
 
 /* The fallback image stays underneath at z-index 1 */
