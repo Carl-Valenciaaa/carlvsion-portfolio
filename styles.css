@@ -53,6 +53,16 @@ main {
 ::-webkit-scrollbar-track { background: var(--black); }
 ::-webkit-scrollbar-thumb { background: #444; border-radius: 3px; }
 
+/* VIDEOS */
+/* Hides the control bar entirely in Webkit browsers */
+video::-webkit-media-controls {
+  display: none !important;
+}
+
+/* Specifically targets the start playback button on iOS */
+video::-webkit-media-controls-start-playback-button {
+  display: none !important;
+}
 
 /* ═══════════════════════════════════════════════════════════
    NAV
